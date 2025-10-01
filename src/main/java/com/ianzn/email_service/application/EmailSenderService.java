@@ -3,7 +3,9 @@ package com.ianzn.email_service.application;
 import com.ianzn.email_service.adapters.EmailSenderGateway;
 import com.ianzn.email_service.core.EmailSenderUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EmailSenderService implements EmailSenderUseCase {
 
     private final EmailSenderGateway emailSenderGateway;
@@ -12,7 +14,10 @@ public class EmailSenderService implements EmailSenderUseCase {
     public EmailSenderService(EmailSenderGateway emailGateway) {
         this.emailSenderGateway = emailGateway;
     }
+
+    @Override
     public void sendEmail(String to, String subject, String body) {
+        this.emailSenderGateway.sendEmail(to, subject, body);
 
     }
 }
